@@ -31,7 +31,9 @@ void Player::Update(const Uint8* keys, Mix_Chunk* Laser) {
 		now = SDL_GetTicks();
 		if (now > timepass + LIMITER) {
 			Projectile::createProjectile(x + w, y + (h - PROJ_H) / 2, PROJ_SPEED, 0, PROJ_W, PROJ_H);
+			Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 			Mix_PlayChannel(-1, Laser, 0);
+			Mix_VolumeMusic(MIX_MAX_VOLUME);
 		}
 		timepass = now;
 	}
@@ -40,7 +42,9 @@ void Player::Update(const Uint8* keys, Mix_Chunk* Laser) {
 		now = SDL_GetTicks();
 		if (now > timepass + LIMITER) {
 			Projectile::createProjectile(x-PROJ_W, y + (h - PROJ_H) / 2, -PROJ_SPEED,0, PROJ_W, PROJ_H);
+			Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 			Mix_PlayChannel(-1, Laser, 0);
+			Mix_VolumeMusic(MIX_MAX_VOLUME);
 		}
 		timepass = now;
 	}
@@ -49,7 +53,9 @@ void Player::Update(const Uint8* keys, Mix_Chunk* Laser) {
 		now = SDL_GetTicks();
 		if (now > timepass + LIMITER) {
 			Projectile::createProjectile(x + (w-PROJ_H)/2, y - (h + PROJ_H)/2, 0, -PROJ_SPEED, PROJ_H, PROJ_W);
+			Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 			Mix_PlayChannel(-1, Laser, 0);
+			Mix_VolumeMusic(MIX_MAX_VOLUME);
 		} 
 		timepass = now;
 	}
@@ -58,7 +64,9 @@ void Player::Update(const Uint8* keys, Mix_Chunk* Laser) {
 		now = SDL_GetTicks();
 		if (now > timepass + LIMITER) {
 			Projectile::createProjectile(x + (w - PROJ_H) / 2, y + PLAYER_HEIGHT, 0, PROJ_SPEED, PROJ_H, PROJ_W);
+			Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 			Mix_PlayChannel(-1, Laser, 0);
+			Mix_VolumeMusic(MIX_MAX_VOLUME);
 		}
 		timepass = now;
 	}
