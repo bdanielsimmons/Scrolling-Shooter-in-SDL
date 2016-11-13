@@ -1,4 +1,3 @@
-
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <iostream>
@@ -22,11 +21,15 @@ int Player::getH() {
 	return h;
 }
 
-void Player::Update(const Uint8* keys, Mix_Chunk* Laser) {
+void Player::Update(const Uint8* keys, Mix_Chunk* Laser, Mix_Music* &Song) {
 	if (keys[SDL_SCANCODE_UP]) y -= DOT_VEL;
 	if (keys[SDL_SCANCODE_DOWN]) y += DOT_VEL;
 	if (keys[SDL_SCANCODE_LEFT]) x -= DOT_VEL;
 	if (keys[SDL_SCANCODE_RIGHT]) x += DOT_VEL;
+	if (keys[SDL_SCANCODE_SPACE]) Mix_PauseMusic();
+	if (keys[SDL_SCANCODE_M]) {
+		Mix_PlayMusic(Song, -1);
+	}
 	if (keys[SDL_SCANCODE_D]) {
 		now = SDL_GetTicks();
 		if (now > timepass + LIMITER) {

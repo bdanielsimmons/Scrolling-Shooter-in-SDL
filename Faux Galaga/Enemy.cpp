@@ -8,6 +8,8 @@
 #include <SDL.h>
 #include <vector>
 
+int nao, pass;
+
 void Enemy::calcAngle(Enemy &a, int px, int py) {
 	float dx = px - a.x;
 	float dy = py - a.y;
@@ -37,7 +39,9 @@ void Enemy::Draw(SDL_Renderer* ren, int cx, int cy) {
 void Enemy::Update(int px, int py, int pw, int ph) {
 	std::vector<Enemy>present;
 	for (Enemy &a : Enemies) {
-		calcAngle(a, px, py);
+		if (sqrt(pow(px-a.x,2)+pow(py-a.y,2)) < 300) {
+			calcAngle(a, px, py);
+		}
 		a.x += a.vx;
 		a.y += a.vy;
 		bool c = false;

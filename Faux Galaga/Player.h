@@ -14,7 +14,7 @@ public:
 		this->w = w;
 		this->h = h;
 	}
-	void Update(const Uint8* , Mix_Chunk*);
+	void Update(const Uint8* , Mix_Chunk*, Mix_Music* &);
 	void Draw(SDL_Renderer*, int, int);
 	int getX();
 	int getY();

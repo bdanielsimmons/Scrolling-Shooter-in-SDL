@@ -44,7 +44,7 @@ int main(int, char**) {
 	SDL_Texture* target_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 10, 10);
 	SDL_SetRenderTarget(renderer, target_texture);*/
 
-	Mix_PlayMusic(Song, 0);
+	Mix_PlayMusic(Song, -1);
 
 	SDL_Event e;
 	while (running) {
@@ -54,7 +54,7 @@ int main(int, char**) {
 			}
 		}
 		auto keys = SDL_GetKeyboardState(NULL);
-		test.Update(keys, Laser);
+		test.Update(keys, Laser, Song);
 		camera.x = (test.getX() + PLAYER_WIDTH / 2) - SCREEN_WIDTH / 2;
 		camera.y = (test.getY() + PLAYER_HEIGHT / 2) - SCREEN_HEIGHT / 2;
 
