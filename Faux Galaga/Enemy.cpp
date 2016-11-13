@@ -39,9 +39,9 @@ void Enemy::Draw(SDL_Renderer* ren, int cx, int cy) {
 void Enemy::Update(int px, int py, int pw, int ph) {
 	std::vector<Enemy>present;
 	for (Enemy &a : Enemies) {
-		if (sqrt(pow(px-a.x,2)+pow(py-a.y,2)) < 300) {
+		//if (sqrt(pow(px-a.x,2)+pow(py-a.y,2)) < 300) {
 			calcAngle(a, px, py);
-		}
+		//}
 		a.x += a.vx;
 		a.y += a.vy;
 		bool c = false;
@@ -50,7 +50,7 @@ void Enemy::Update(int px, int py, int pw, int ph) {
 		for (Projectile &p : Projectile::Bullets) {
 			c = c || (CheckCollision(a.x, a.y, a.w, a.h, p.x, p.y, p.w, p.h));
 			if (c) {
-				Projectile::Bullets.pop_back();
+				Projectile::Bullets.pop_back(); //Shoot too fast and you might pop back more than you wanted!?
 				break;
 			}
 		}
